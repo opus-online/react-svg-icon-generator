@@ -1,100 +1,82 @@
-/* eslint-disable */
 // {{comment}}
-{% if radium %}
-import Radium from 'radium';
-{%- endif %}
-{% if reactPureRender %}
-import Component from 'react-pure-render/component';
 import React from 'react';
-{%- else %}
-import React, {Component} from 'react';
-{%- endif %}
 
 const iconList = [
-  {%- for icon in icons %}
-  '{{icon.name}}',
-  {%- endfor %}
-]
+    {%- for icon in icons %}
+    '{{icon.name}}',
+    {%- endfor %}
+];
 
-{% if radium %}
-class Icon extends Component {
-{%- else %}
-export default class Icon extends Component {
-{%- endif %}
-
-  static propTypes = {
-    color: React.PropTypes.string,
-    height: React.PropTypes.number,
-    kind: React.PropTypes.oneOf([
-      {%- for icon in icons %}
-      '{{icon.name}}',
-      {%- endfor %}
-    ]).isRequired,
-    onClick: React.PropTypes.func,
-    preview: React.PropTypes.bool,
-    size: React.PropTypes.number,
-    style: React.PropTypes.oneOfType([
-      React.PropTypes.array,
-      React.PropTypes.object
-    ]),
-    width: React.PropTypes.number,
-    wrapperStyle: React.PropTypes.oneOfType([
-      React.PropTypes.array,
-      React.PropTypes.object
-    ])
-  };
-
-  static defaultProps = {
-    color: '#000',
-    size: 32
-  }
-
-  render() {
-    const {kind, preview} = this.props
-
-    return preview ?
-      this.renderPreview() :
-      this.renderIcon(kind)
-  }
-
-  renderPreview() {
-    return (
-      <div>
-        {iconList.map(kind => this.renderPreviewKind(kind))}
-      </div>
-    )
-  }
-
-  renderIcon(kind) {
-    const {wrapperStyle} = this.props;
-
-    if (wrapperStyle)
-      return <div style={wrapperStyle}>{this.getIcon(kind)}</div>
-
-    return this.getIcon(kind)
-  }
-
-  renderPreviewKind(kind) {
-    return (
-      <div key={kind}>
-        <h3>&lt;Icon kind="{kind}" /&gt;</h3>
-        {this.renderIcon(kind)}
-      </div>
-    )
-  }
-
-  getIcon(kind) {
-    const {color, height, onClick, size, style, width} = this.props;
-
-    switch (kind) {
-      default: return null;
-      {% for icon in icons -%}
-        case ('{{icon.name}}'): return ({{icon.svg | safe}});
-      {% endfor -%}
-    }
-  }
+interface IconProps {
+    color?: string;
+    height?: string;
+    kind?: string[];
+    onClick?: () => void;
+    preview?: boolean;
+    size?: number;
+    style?: any,
+    width?: number;
+    wrapperStyle?: any;
 }
+export default class Icon extends React.Component<IconProps,{}> {
 
-{% if radium %}
-export default Radium(Icon)
-{%- endif %}
+    static propTypes = {
+        color: React.PropTypes.string,
+        height: React.PropTypes.number,
+        kind: React.PropTypes.oneOf(iconList).isRequired,
+        onClick: React.PropTypes.func,
+        preview: React.PropTypes.bool,
+        size: React.PropTypes.number,
+        style: React.PropTypes.oneOfType([
+            React.PropTypes.array,
+            React.PropTypes.object
+        ]),
+        width: React.PropTypes.number,
+        wrapperStyle: React.PropTypes.oneOfType([
+            React.PropTypes.array,
+            React.PropTypes.object
+        ])
+    };
+
+    static defaultProps = {
+        color: '#000',
+        size: 32
+    };
+
+    render() {
+        const { kind, preview } = this.props;
+        return preview ? this.renderPreview() : this.renderIcon(kind);
+    }
+
+    renderPreview() {
+        return (<div>{ iconList.map(kind => this.renderPreviewKind(kind)) }</div>);
+    }
+
+    renderIcon(kind) {
+        const { wrapperStyle } = this.props;
+        if (wrapperStyle) {
+            return (<div style={wrapperStyle}>{ this.getIcon(kind) }</div>);
+        }
+        return this.getIcon(kind);
+    }
+
+    renderPreviewKind(kind) {
+        return (
+            <div key={kind}>
+                <h3>&lt;Icon kind="{kind}" /&gt;</h3>
+                { this.renderIcon(kind) }
+            </div>
+        );
+    }
+
+    getIcon(kind) {
+        const { color, height, onClick, size, style, width } = this.props;
+
+        switch (kind) {
+            {% for icon in icons -%}
+            case ('{{icon.name}}'): return ({{icon.svg | safe}});
+            {% endfor -%}
+            default: return null;
+        }
+    }
+}

@@ -23,7 +23,7 @@ npm install --save-dev react-svg-icon-generator
 
 
 ```js
-const configureSvgIcon = require('react-svg-icon-generator').default;
+const configureSvgIcon = require('react-svg-iradiumcon-generator').default;
 
 configureSvgIcon({
   destination: path.join(__dirname, 'components', 'Icon.js'),
