@@ -4,6 +4,10 @@ React SVG Icon Generator Typescript
 Generate React Icon Component from SVG icons to show, resize and recolor them.
 The default template is a typescript template.
 
+# Dependencies
+
+This codebase is built on node v6: https://nodejs.org/en/blog/release/v6.9.0/
+
 ## Instalation
 
 You need to add this just to development, because it will generate self contained React component directly to your codebase.
