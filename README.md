@@ -67,4 +67,4 @@ export default class App extends Component {
 
 ## Thanks
 
-This package was build upon [Library Boilerplate](https://github.com/gaearon/library-boilerplate) from [Dan Abramov](https://github.com/gaearon)
+This package was build upon [react-svg-icon-generator](https://github.com/blueberryapps/react-svg-icon-generator)

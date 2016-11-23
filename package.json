@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blueberryapps/react-svg-icon-generator.git"
+    "url": "https://github.com/peeter-tomberg/react-svg-icon-generator.git"
   },
   "keywords": [
     "react",
@@ -20,9 +20,9 @@
   "author": "Blueberry, Ondrej Bartas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/blueberryapps/react-svg-icon-generator/issues"
+    "url": "https://github.com/peeter-tomberg/react-svg-icon-generator/issues"
   },
-  "homepage": "https://github.com/blueberryapps/react-svg-icon-generator",
+  "homepage": "https://github.com/peeter-tomberg/react-svg-icon-generator",
   "devDependencies": {
     "escope": "^3.6.0",
     "eslint": "^3.6",
