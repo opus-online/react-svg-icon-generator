@@ -1,14 +1,12 @@
 {
-  "name": "react-svg-icon-generator",
-  "version": "0.2.2",
+  "name": "react-svg-icon-generator-ts",
+  "version": "0.0.1",
   "description": "Generate React Icon Component from SVG icons to show, resize and recolor them.",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "clean": "rimraf lib dist",
-    "build": "babel src --out-dir lib",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
-    "prepublish": "npm run lint && npm run test && npm run clean && npm run build"
+    "prepublish": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -26,29 +24,13 @@
   },
   "homepage": "https://github.com/blueberryapps/react-svg-icon-generator",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
-    "babel-core": "^6.14.0",
-    "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.5",
-    "babel-npm": "0.0.1",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
     "escope": "^3.6.0",
     "eslint": "^3.6",
     "eslint-config-airbnb": "12.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.3.0",
-    "expect": "^1.20.2",
     "install": "^0.8.1",
-    "isparta": "^4.0.0",
-    "mocha": "^3.1.0",
-    "rimraf": "^2.5.4"
+    "isparta": "^4.0.0"
   },
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "gulp": ">=3",
-    "invariant": "^2.2.1",
     "nunjucks": "^2.5.2",
     "svgo": "^0.7.1"
   }

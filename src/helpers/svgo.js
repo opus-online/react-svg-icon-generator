@@ -1,4 +1,4 @@
-import SVGOptim from 'svgo';
+const SVGOptim = require('svgo');
 
 const svgo = new SVGOptim({
     plugins: [
@@ -43,4 +43,4 @@ const svgo = new SVGOptim({
     ]
 });
 
-export default svgo;
+module.exports = svgo;

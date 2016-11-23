@@ -9,8 +9,8 @@ const iconList = [
 
 interface IconProps {
     color?: string;
-    height?: string;
-    kind?: string[];
+    height?: number;
+    kind?: string;
     onClick?: () => void;
     preview?: boolean;
     size?: number;

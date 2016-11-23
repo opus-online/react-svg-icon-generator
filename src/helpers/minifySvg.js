@@ -1,10 +1,9 @@
-import path from 'path';
-import Promise from 'bluebird';
-import svgo from './svgo';
+const path = require('path');
+const svgo = require('./svgo');
 
-export default function minifySvg (file, content) {
+module.exports = (file, content) => {
     return new Promise(resolve => svgo.optimize(content, result => resolve({
         name: path.basename(file, '.svg'),
         svg: result
     })));
-}
+};
