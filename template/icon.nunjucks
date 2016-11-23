@@ -9,6 +9,7 @@ const iconList = [
 
 interface IconProps {
     color?: string;
+    className?: string;
     height?: number;
     kind?: string;
     onClick?: () => void;
@@ -22,6 +23,7 @@ export default class Icon extends React.Component<IconProps,{}> {
 
     static propTypes = {
         color: React.PropTypes.string,
+        className: React.PropTypes.string,
         height: React.PropTypes.number,
         kind: React.PropTypes.oneOf(iconList).isRequired,
         onClick: React.PropTypes.func,
@@ -39,6 +41,7 @@ export default class Icon extends React.Component<IconProps,{}> {
     };
 
     static defaultProps = {
+        className: '',
         color: '#000',
         size: 32
     };
@@ -70,7 +73,7 @@ export default class Icon extends React.Component<IconProps,{}> {
     }
 
     getIcon(kind) {
-        const { color, height, onClick, size, style, width } = this.props;
+        const { color, height, onClick, size, style, width, className } = this.props;
 
         switch (kind) {
             {% for icon in icons -%}
