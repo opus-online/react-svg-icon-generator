@@ -6,7 +6,8 @@ module.exports.cleanupSvg = (svg) => {
     return svg
     .replace(/width="\d+"/, '')
     .replace(/height="\d+"/, '')
-    .replace(/fill="#?\w+"/g, '')
+    .replace(/fill-rule="#?\w+"/g, '')
+    .replace(/clip-rule="#?\w+"/g, '')
     .replace(/\s{2,}/g, ' ')
     .replace(/class="\w+"/g, match => match.replace(/class/g, 'className'))
     .replace(/<style>.*<\/style>/g, match => match.replace(/<style>/g, '<style>{ `').replace(/<\/style>/g, '` }</style>'))
