@@ -1,0 +1,63 @@
+
+// {{comment}}
+import React from 'react';
+
+{%- for icon in icons %}
+import { Icon{{icon.capitalizeName}} } from './icons/{{icon.name}}-icon';
+{%- endfor %}
+
+const iconList = [
+  {%- for icon in icons %}
+  '{{icon.name}}',
+  {%- endfor %}
+];
+
+interface IconProps {
+  color?: string;
+  className?: string;
+  height?: number;
+  kind?: string;
+  onClick?: () => void;
+  preview?: boolean;
+  size?: number;
+  style?: any,
+  width?: number;
+  wrapperStyle?: any;
+}
+export default class Icon extends React.Component<IconProps,{}> {
+
+  render() {
+    const { kind, preview } = this.props;
+    return preview ? this.renderPreview() : this.renderIcon(kind);
+  }
+
+  renderPreview() {
+    return (<div>{ iconList.map(kind => this.renderPreviewKind(kind)) }</div>);
+  }
+
+  renderIcon(kind) {
+    const { wrapperStyle } = this.props;
+    if (wrapperStyle) {
+      return (<div style={wrapperStyle}>{ this.getIcon(kind) }</div>);
+    }
+    return this.getIcon(kind);
+  }
+
+  renderPreviewKind(kind) {
+    return (
+      <div key={kind}>
+        <h3>&lt;Icon kind="{kind}" /&gt;</h3>
+        { this.renderIcon(kind) }
+      </div>
+    );
+  }
+
+  getIcon(kind) {
+    switch (kind) {
+      {% for icon in icons -%}
+      case ('{{icon.name}}'): return <Icon{{icon.capitalizeName}} {...this.props}/>;
+      {% endfor -%}
+      default: return null;
+    }
+  }
+}
