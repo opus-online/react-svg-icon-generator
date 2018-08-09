@@ -1,0 +1,6 @@
+// {{comment}}
+import React from 'react';
+
+export const Icon{{icon.capitalizeName}} = ({color = '#000', height, onClick, size = 32, style, width, className}) => {
+  return {{icon.svg | safe}};
+}
